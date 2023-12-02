@@ -25,7 +25,7 @@ const timeout = async (timeout) => {
 };
 async function loadExploit() {
   await timeout(500);
- 
+  document.querySelector(".load").disabled = true;
 
   const startingPrompt = append("p");
   startingPrompt.textContent = PROMPTS.STARTING_EXPLOIT;
@@ -59,8 +59,11 @@ async function loadExploit() {
   
   const finished = append('p');
   finished.textContent = PROMPTS.FINISHED_EXPLOIT;
+
+  await timeout(500);
+  document.querySelector('.load').disabled = false;
 }
 
 
 
-document.querySelector(".load").onclick = loadExploit;
+document.querySelector(".load").addEventListener("click", loadExploit);
