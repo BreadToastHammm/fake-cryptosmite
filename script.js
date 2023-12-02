@@ -24,6 +24,10 @@ const timeout = async (timeout) => {
   return await new Promise((resolve) => setTimeout(resolve, timeout));
 };
 async function loadExploit() {
+  if (navigator.userAgent.indexOf("CrOS") < 1) {
+    alert("This is not supported by your device type, I highly suggest you cope with it.");
+    return;
+  }
   await timeout(500);
   document.querySelector(".load").disabled = true;
 
